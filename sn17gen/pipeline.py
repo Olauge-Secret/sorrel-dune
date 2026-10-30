@@ -214,9 +214,9 @@ def _panel(witness, renderer, ref: bytes, modules: list[str]) -> str:
 
 
 def _final_refine(witness, renderer, ref: bytes, best: str, sheet: bytes) -> str:
-    """One more refinement of the picked module with a part-by-part structure check; kept only if it renders."""
+    """One more refinement of the picked module against the four camera views; kept only if it renders."""
     ledger = Ledger(credit_cap=FINAL_REFINE_CREDITS + 1, call_cap=1)
-    js = extract(_call(witness, ledger, FINAL_REFINE_ID, "final", prompts.FINAL_REFINE_USER % best, [ref, sheet],
+    js = extract(_call(witness, ledger, FINAL_REFINE_ID, "final", prompts.REFINE_USER % best, [ref, sheet],
                        effort=REFINE_EFFORT))
     wrapped = wrap(js) if js is not None else None
     if wrapped is None:

@@ -66,12 +66,3 @@ Output JSON only: {"penalties": [<one number per candidate, in order>]}"""
 GEN_USER_ALT = ("Reference photo attached. Write the complete Three.js module for this object. Start from the proportions: "
                 "measure the width, height and depth of every major part relative to the whole object and write them as "
                 "named constants, then build every part from them. Output only the JavaScript.")
-
-
-STRUCTURE_CHECK = ("Before changing anything, go over the photo part by part and check the model against it: the "
-                   "overall width : height : depth, every part's shape, size and position, and the exact count of every "
-                   "repeated part (legs, handles, cushions, petals, rings, spokes, buttons). Name the structure that makes "
-                   "the object recognisable (for example X-shaped folding legs, two moulded side handles, thin double "
-                   "rings, plump rolled arms) and make sure the model has that structure and not a simpler substitute.")
-FINAL_REFINE_USER = REFINE_USER.replace("Return the complete improved module",
-                                        STRUCTURE_CHECK + "\nReturn the complete improved module", 1)
